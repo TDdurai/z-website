@@ -1,0 +1,19 @@
+version: 0.0
+os: linux
+
+files:
+  - source: files/index.html
+    destination: /var/www/html
+
+permissions:
+  - object: /var/www/html
+    pattern: index.html
+    mode: 777
+    type:
+      - file
+
+hooks:
+  BeforeInstall:
+    - location: scripts/start-server.sh
+  AfterInstall:
+    - location: scripts/stop-server.sh
